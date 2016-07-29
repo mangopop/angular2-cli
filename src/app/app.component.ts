@@ -22,5 +22,8 @@ export class AppComponent {
   }
 
   //we need a handler remove items from the array
-
+  removeItem(index){
+    console.log(index);    
+    this.items.splice(index,1);
+  }
 }
