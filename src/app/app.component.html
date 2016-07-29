@@ -1,3 +1,9 @@
 <h1>
   {{title}}
 </h1>
+<!--using the value is cleaner and stops us picking our way thround the DOM-->
+<input type="text" placeholder="Enter the Todo item" #newItem (keyup.enter)="addItem(newItem.value); newItem.value = ''" > <button (click)=addItem(newItem.value)>Add</button>
+
+<ul>
+  <li *ngFor="let item of items">{{item}}</li>
+</ul>
