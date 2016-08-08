@@ -7,18 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.css']
 })
 export class AppComponent {
-  title = 'main app component';
+  title = 'Todo';
   //we need an array to hold the todo items
   items = ['item1', 'item2'];
-
-
 
   //we need a handler push the items to the array when add is clicked or enter is pressed
   addItem(newItem:string){
     if(newItem){
-        this.items.push(newItem);
+        this.items.push(newItem);        
     }
-      //we need to clear input upon entering item, cannot do this with blur nicely
+    //we need to clear input upon entering item, cannot do this with blur nicely
   }
 
   //we need a handler remove items from the array

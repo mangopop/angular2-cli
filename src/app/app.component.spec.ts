@@ -13,8 +13,27 @@ describe('App: AngularCli', () => {
       expect(app).toBeTruthy();
     }));
 
-  it('should have as title \'app works!\'',
+  it('should have as title Todo',
     inject([AppComponent], (app: AppComponent) => {
-      expect(app.title).toEqual('app works!');
+      expect(app.title).toEqual('Todo');
+    }));
+
+  // let items = ['item1','item2'];
+
+  it('should have items defined',
+    inject([AppComponent], (app: AppComponent) => {
+      expect(app.items).toBeDefined();
+    }));
+
+  it('should have add item to array',
+    inject([AppComponent], (app: AppComponent) => {
+      app.addItem('string');
+      expect(app.items.length).toEqual(3);
+    }));
+
+  it('should have remove item from array',
+    inject([AppComponent], (app: AppComponent) => {
+      app.removeItem('string');
+      expect(app.items.length).toEqual(1);
     }));
 });
