@@ -4,7 +4,10 @@
 <!--using the value is cleaner and stops us picking our way thround the DOM-->
 <input type="text" placeholder="Enter the Todo item" #newItem (keyup.enter)="addItem(newItem.value); newItem.value = ''" > <button (click)=addItem(newItem.value)>Add</button>
 
+{{items | json}}
+
 <ul>
-  <li *ngFor="let item of items ; let i=index">{{item}} <span><a href="#" target="_self" (click)=removeItem(i)>x</a></span></li>
+  <li *ngFor="let item of items ; let i=index" [class.strikeThrough]="item.completed" (click)="toggleCompleted(item,i)">{{item.text}} <span><a href="#" target="_self" (click)=removeItem(i)>x</a></span></li>
 </ul>
 
+filter: <a href="" >All</a> <a href="">completed</a> <a href="">Active</a>
