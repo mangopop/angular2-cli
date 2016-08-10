@@ -1,23 +1,28 @@
 import { Component } from '@angular/core';
-import {TodoFilterPipe} from './todo-filter-pipe';
 import {MyNewPipePipe} from './my-new-pipe.pipe';
+import {Items} from './items';
+import {MOCKITEMS} from './mock-items';
+//when testing use ng test --build=false
 
 @Component({
   moduleId: module.id,
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.css'],
-  pipes: [TodoFilterPipe,MyNewPipePipe]
+  pipes: [MyNewPipePipe]
 })
 export class AppComponent {
 
   constructor() { this.init(); }
 
   title = 'Todo';
-  //we need an array to hold the todo items
-  items = [
-    {text:'item1',completed:false}
-  ];
+
+  //we need an array to hold the todo items - TODO we should bring this in from the mock-array
+  // items: Items[] = [
+  //   {text:'item1',completed:false}
+  // ];
+
+  items = MOCKITEMS;
   
   show: string = 'all';
 
@@ -52,10 +57,15 @@ export class AppComponent {
   //we need a handler push the items to the array when add is clicked or enter is pressed
   addItem(newItem:string){
     if(newItem){
-        this.items.push({text:newItem,completed:false});        
+        newItem = newItem.trim();
+        // Pure pipe won't update display because heroes array reference is unchanged
+        // but using a impure pipe will watch mutations        
+        this.items.push({text:newItem,completed:false});
+        // Pipe updates display because heroes array is a new object
+        // this.items = this.items.concat({text:newItem,completed:false});        
     }
     this.calcActiveItems();
-    //we need to clear input upon entering item, cannot do this with blur nicely
+    //TODO we need to clear input upon entering item, cannot do this with blur nicely
   }
 
   //we need a handler remove items from the array

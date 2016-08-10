@@ -1,0 +1,22 @@
+New angular 2 app
+Build a todo app
+
+(if I get stuck https://github.com/tastejs/todomvc/tree/gh-pages/examples/angular2/app)
+
+- A list with input
+- when press enter item is added below
+- items can also be deleted
+- items can be ticked off as complete (goes grey with strike though)
+- can do this by click and change class but also need to hold state for filtering
+- items can be filtered by, all, active and completed
+- surely ngif is used. Can use completed, but only when a one of the filters is active
+- there is a count of active items
+- items can be selected with radio button
+- all items can be selected
+- there is a clear completed button
+
+
+Stretch objectives!
+- Will all need to be persisted!
+- Extract items into TodoStore
+- Test!

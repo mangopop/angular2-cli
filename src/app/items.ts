@@ -1,5 +1,4 @@
 export class Items{
-    constructor(
-        public items:string[]
-    ){}
+    text: string;
+    completed: boolean;
 }
