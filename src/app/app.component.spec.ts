@@ -28,12 +28,12 @@ describe('App: AngularCli', () => {
   it('should have add item to array',
     inject([AppComponent], (app: AppComponent) => {
       app.addItem('string');
-      expect(app.items.length).toEqual(3);
+      expect(app.items.length).toEqual(2);
     }));
 
   it('should have remove item from array',
     inject([AppComponent], (app: AppComponent) => {
       app.removeItem('string');
-      expect(app.items.length).toEqual(1);
+      expect(app.items.length).toEqual(0);
     }));
 });
