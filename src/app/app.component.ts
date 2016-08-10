@@ -1,18 +1,26 @@
 import { Component } from '@angular/core';
+import {TodoFilterPipe} from './todo-filter-pipe';
+import {MyNewPipePipe} from './my-new-pipe.pipe';
 
 @Component({
   moduleId: module.id,
   selector: 'app-root',
   templateUrl: 'app.component.html',
-  styleUrls: ['app.component.css']
+  styleUrls: ['app.component.css'],
+  pipes: [TodoFilterPipe,MyNewPipePipe]
 })
 export class AppComponent {
+
+  constructor() { this.init(); }
+
   title = 'Todo';
   //we need an array to hold the todo items
   items = [
     {text:'item1',completed:false}
   ];
   
+  show: string = 'all';
+
   //also need to hold state of completion
   //could mark by array index (but this changes when new items are added)
   completedItems: string[] = [];
