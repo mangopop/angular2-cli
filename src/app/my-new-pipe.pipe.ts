@@ -7,8 +7,16 @@ import {MOCKITEMS} from './mock-items';
 })
 export class MyNewPipePipe implements PipeTransform {
   //transform is the only method?
-  transform(items: any): any {
-    return items.filter(item => !item.completed);
+  transform(items: any,show): any {
+    if(show === 'active'){
+      return items.filter(item => !item.completed);
+    }
+    else if(show === 'completed'){
+      return items.filter(item => item.completed);
+    }
+    else{
+      return items;
+    }
   }
 
 }

@@ -7,7 +7,7 @@
 {{items | json}}
 
 <ul>
-  <li *ngFor="let item of (items | myNewPipe); let i=index" [class.strikeThrough]="item.completed" (click)="toggleCompleted(item,i)">{{item.text}} <span><a href="#" target="_self" (click)=removeItem(i)>x</a></span></li>
+  <li *ngFor="let item of (items | myNewPipe : show ); let i=index" [class.strikeThrough]="item.completed" (click)="toggleCompleted(item,i)">{{item.text}} <span><a href="#" target="_self" (click)=removeItem(i)>x</a></span></li>
 </ul>
 
 Filter: <a href="#" (click)="show = 'all'">All</a> <a href="#" (click)="show = 'completed'">completed</a> <a href="#" (click)="show = 'active'">Active</a>
