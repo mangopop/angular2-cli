@@ -22,13 +22,13 @@ export class AppComponent {
   //   {text:'item1',completed:false}
   // ];
 
-  items = MOCKITEMS;
+  items = MOCKITEMS; //not able to remove from this in test?
+
+  // items = [
+  //   { "text": 'Item123', "completed": false }
+  // ];
   
   show: string = 'all';
-
-  //also need to hold state of completion
-  //could mark by array index (but this changes when new items are added)
-  completedItems: string[] = [];
 
   //count the items that are active
   activeItems: number;
@@ -36,6 +36,7 @@ export class AppComponent {
   //TODO having problems calling methods inside class with angular method. How can we avoid this?
   init(){
     this.calcActiveItems();
+    console.log(this.items);
   }
 
   calcActiveItems(){
@@ -70,7 +71,6 @@ export class AppComponent {
 
   //we need a handler remove items from the array
   removeItem(index){
-    console.log(index);    
     this.items.splice(index,1);
     this.calcActiveItems();
   }

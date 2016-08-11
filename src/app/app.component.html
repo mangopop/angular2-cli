@@ -4,7 +4,7 @@
 <!--using the #newitem.value is cleaner and stops us picking our way thround the DOM-->
 <input type="text" placeholder="Enter the Todo item" #newItem (keyup.enter)="addItem(newItem.value); newItem.value = ''" > <button (click)=addItem(newItem.value)>Add</button>
 
-{{items | json}}
+
 
 <ul>
   <li *ngFor="let item of (items | myNewPipe : show ); let i=index" [class.strikeThrough]="item.completed" (click)="toggleCompleted(item,i)">{{item.text}} <span><a href="#" target="_self" (click)=removeItem(i)>x</a></span></li>
@@ -15,3 +15,5 @@ Filter: <a href="#" (click)="show = 'all'">All</a> <a href="#" (click)="show = '
 <p>{{show}}</p>
 
 <p>active items: {{activeItems}}</p>
+
+<p>{{items | json}}</p>
