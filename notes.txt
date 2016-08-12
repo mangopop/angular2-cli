@@ -9,6 +9,11 @@ The benefits
 - data is pushed instead of pulled (i.e promises)
     - a function returns one value when asked, obs can sync/async return zero to infinate from time invoked to onwards
 - Observables can "return" multiple values over time (sync/async), unlike functions (sync)
+- The stream front end paradigm - values, over time.
+- observables are cancelable. 
+
+other
+- observables can exe return commands on unsubscribe
 
 terminology
 - Subscribing to an Observable is analogous to calling a Function.
@@ -16,4 +21,40 @@ terminology
     - plain Observables are unicast
 
 So how to use in the todo app?
+
+Development consists of creating or identifying the streams of values your program is interested in, combining them together and finally subscribing to those streams to produce a reaction to new values.
+
+todo input could be a stream like this
+
+var button = document.querySelector('button');
+Rx.Observable.fromEvent(button, 'click')
+  .scan(count => count + 1, 0)
+  .subscribe(count => console.log('Clicked ${count} times'));
+
+input would be observable
+
+
+
+
+
+
+================ small example ===================
+
+<button id='inc' value='1'>+</button>
+<button id='dec' value='-1'>-</button>
+
+<div id="counter"></div>
+
+let inc = document.getElementById('inc');
+let dec = document.getElementById('dec');
+let counter = document.getElementById('counter');
+
+let incClick = Rx.Observable.fromEvent(inc, 'click');
+let decClick = Rx.Observable.fromEvent(dec, 'click');
+
+incClick
+  .merge(decClick)
+  .map( (event) => parseInt(event.target.value,10) )
+  .scan( (total,value) => total + value, 0)
+  .subscribe(total => counter.innerText = total.toString() );
 
