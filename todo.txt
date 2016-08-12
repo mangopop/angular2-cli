@@ -20,3 +20,7 @@ Stretch objectives!
 - Will all need to be persisted!
 - Extract items into TodoStore
 - Test!
+
+RXJS style
+- what events can we use this for 
+    - add / remove / complete?

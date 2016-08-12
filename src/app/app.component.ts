@@ -11,7 +11,7 @@ import {TodoInputComponent} from './todo-input/todo-input.component';
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.css'],
   pipes: [MyNewPipePipe],
-  directives: [TodoInputComponent] //forgot this last time
+  directives: [TodoInputComponent] //forgot this
 })
 export class AppComponent {
 

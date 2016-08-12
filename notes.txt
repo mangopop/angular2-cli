@@ -1,0 +1,19 @@
+RXJS
+
+The benefits
+- observables are values or arrays of events
+- they can be synchronous or asynchronous
+- you subscribe to subject or observables
+- the benefit of this is they wait for things to happen like promises but they are more powerful  
+- pure functions are less prone to errors
+- data is pushed instead of pulled (i.e promises)
+    - a function returns one value when asked, obs can sync/async return zero to infinate from time invoked to onwards
+- Observables can "return" multiple values over time (sync/async), unlike functions (sync)
+
+terminology
+- Subscribing to an Observable is analogous to calling a Function.
+- Subject: is the equivalent to an EventEmitter, and the only way of multicasting a value or event to multiple Observers.
+    - plain Observables are unicast
+
+So how to use in the todo app?
+
