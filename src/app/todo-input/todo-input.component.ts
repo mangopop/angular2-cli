@@ -9,6 +9,9 @@ import {MOCKITEMS} from '../mock-items';
 })
 export class TodoInputComponent implements OnInit {
 
+  //There if this component was reused, this might be helpful. Otherwise I cannot see benifit, it's not that much different to test either.
+  // but this type of thing is strongly suggested...
+
   constructor() { }
   ngOnInit() {  }
 
@@ -26,7 +29,8 @@ export class TodoInputComponent implements OnInit {
         // Pipe updates display because heroes array is a new object
         // this.items = this.items.concat({text:newItem,completed:false});
         
-        //TODO call parent but avoid strong coupling 
+        //emit event to parent, which in turn calls a method on the parent 
+        // of course we could send a value and using parent method to assign this etc
         this.added.emit('added');         
     }
 
