@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {MyNewPipePipe} from './my-new-pipe.pipe';
 import {Items} from './items';
 import {MOCKITEMS} from './mock-items';
+import {TodoInputComponent} from './todo-input/todo-input.component';
 //when testing use ng test --build=false
 
 @Component({
@@ -9,7 +10,8 @@ import {MOCKITEMS} from './mock-items';
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.css'],
-  pipes: [MyNewPipePipe]
+  pipes: [MyNewPipePipe],
+  directives: [TodoInputComponent] //forgot this last time
 })
 export class AppComponent {
 
@@ -56,18 +58,24 @@ export class AppComponent {
   }
 
   //we need a handler push the items to the array when add is clicked or enter is pressed
-  addItem(newItem:string){
-    if(newItem){
-        newItem = newItem.trim();
-        // Pure pipe won't update display because heroes array reference is unchanged
-        // but using a impure pipe will watch mutations        
-        this.items.push({text:newItem,completed:false});
-        // Pipe updates display because heroes array is a new object
-        // this.items = this.items.concat({text:newItem,completed:false});        
-    }
+
+  itemAdded(event){
+    console.log(` event emmit from todo-input with mesage: ${event} `);
     this.calcActiveItems();
-    //TODO we need to clear input upon entering item, cannot do this with blur nicely
   }
+
+  // addItem(newItem:string){
+  //   if(newItem){
+  //       newItem = newItem.trim();
+  //       // Pure pipe won't update display because heroes array reference is unchanged
+  //       // but using a impure pipe will watch mutations        
+  //       this.items.push({text:newItem,completed:false});
+  //       // Pipe updates display because heroes array is a new object
+  //       // this.items = this.items.concat({text:newItem,completed:false});        
+  //   }
+  //   this.calcActiveItems();
+  //   //TODO we need to clear input upon entering item, cannot do this with blur nicely
+  // }
 
   //we need a handler remove items from the array
   removeItem(index){
